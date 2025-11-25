@@ -36,7 +36,6 @@ export class LoginComponent {
     //Add 'implements OnInit' to the class.
 
     //Call api lấy danh sách roles lưu vào biến roles
-    debugger;
     this.rolesService.getRoles().subscribe({
       next: (roles: Role[]) => {
         console.log('Roles received:', roles); // Log để kiểm tra dữ liệu
@@ -64,19 +63,18 @@ export class LoginComponent {
 
     this.userService.login(loginDTO).subscribe({
       next: (response: LoginResponse) => {
-        debugger;
         const { token } = response;
         if (this.rememberMe) {
           this.tokenService.setToken(token);
         }
+        // Navigate to home after successful login
+        this.router.navigate(['/home']);
       },
-      complete: () => {
-        debugger;
-      },
+      complete: () => {},
       error: (error: any) => {
-        debugger;
-        alert(`Can't login, error:${error.error}`);
-        console.log(error);
+        const message = error.error?.message || error.message || 'Login failed';
+        alert(`Can't login: ${message}`);
+        console.error('Login error:', error);
       },
     });
   }

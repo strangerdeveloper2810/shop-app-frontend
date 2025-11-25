@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
@@ -14,6 +16,7 @@ import { TokenInterceptor } from './interceptor/token.interceptor';
 
 @NgModule({
   declarations: [
+    AppComponent,
     HomeComponent,
     DetailProductComponent,
     HeaderComponent,
@@ -23,7 +26,12 @@ import { TokenInterceptor } from './interceptor/token.interceptor';
     LoginComponent,
     RegisterComponent,
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule  // Import routing module
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -31,13 +39,6 @@ import { TokenInterceptor } from './interceptor/token.interceptor';
       multi: true,
     },
   ],
-  bootstrap: [
-    // HomeComponent,
-    // DetailProductComponent,
-    // OrderComponent,
-    // OrderConfirmComponent,
-    LoginComponent,
-    // RegisterComponent,
-  ],
+  bootstrap: [AppComponent],  // Bootstrap AppComponent thay vì LoginComponent
 })
 export class AppModule {}

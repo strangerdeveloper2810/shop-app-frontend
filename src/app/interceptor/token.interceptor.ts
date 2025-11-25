@@ -19,7 +19,7 @@ export class TokenInterceptor implements HttpInterceptor {
     if (token) {
       req = req.clone({
         setHeaders: {
-          Authorizaton: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
     }
