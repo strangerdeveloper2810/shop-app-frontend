@@ -1,0 +1,161 @@
+<div class="bg-cream-50 dark:bg-stone-950 py-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Page Title -->
+    <div class="text-center mb-12">
+      <h1 class="text-3xl md:text-4xl font-display font-bold text-stone-800 dark:text-stone-100 mb-2">
+        Đặt hàng
+      </h1>
+      <p class="text-stone-500 dark:text-stone-400">Hoàn tất thông tin để xác nhận đơn hàng của bạn</p>
+    </div>
+
+    <!-- Order Layout -->
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Left Column - Recipient Info Form -->
+      <div class="w-full lg:w-1/2">
+        <div class="card p-8">
+          <h2 class="text-2xl font-display font-bold text-stone-800 dark:text-stone-100 mb-6">
+            Thông tin người nhận
+          </h2>
+
+          <form class="space-y-6">
+            <div>
+              <label for="name" class="block text-sm font-semibold text-stone-600 dark:text-stone-300 mb-2">
+                Họ và tên
+              </label>
+              <input
+                type="text"
+                id="name"
+                class="input w-full"
+                placeholder="Nhập họ và tên của bạn"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-semibold text-stone-600 dark:text-stone-300 mb-2">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                class="input w-full"
+                placeholder="example&#64;email.com"
+              />
+            </div>
+
+            <div>
+              <label for="phone" class="block text-sm font-semibold text-stone-600 dark:text-stone-300 mb-2">
+                Số điện thoại
+              </label>
+              <input
+                type="text"
+                id="phone"
+                class="input w-full"
+                placeholder="0123 456 789"
+              />
+            </div>
+
+            <div>
+              <label for="address" class="block text-sm font-semibold text-stone-600 dark:text-stone-300 mb-2">
+                Địa chỉ giao hàng
+              </label>
+              <textarea
+                id="address"
+                rows="3"
+                class="input w-full resize-none"
+                placeholder="Nhập địa chỉ chi tiết"
+              ></textarea>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right Column - Order Summary -->
+      <div class="w-full lg:w-1/2">
+        <div class="card p-8">
+          <h2 class="text-2xl font-display font-bold text-stone-800 dark:text-stone-100 mb-6">
+            Sản phẩm đã đặt hàng
+          </h2>
+
+          <!-- Order Table -->
+          <div class="overflow-x-auto mb-6">
+            <table class="w-full border-collapse">
+              <thead>
+                <tr class="border-b border-stone-200 dark:border-stone-700">
+                  <th class="text-left py-4 px-3 text-sm font-semibold text-stone-500 dark:text-stone-400">Sản phẩm</th>
+                  <th class="text-center py-4 px-3 text-sm font-semibold text-stone-500 dark:text-stone-400">SL</th>
+                  <th class="text-center py-4 px-3 text-sm font-semibold text-stone-500 dark:text-stone-400">Đơn giá</th>
+                  <th class="text-right py-4 px-3 text-sm font-semibold text-stone-500 dark:text-stone-400">Tổng</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-stone-100 dark:border-stone-800 hover:bg-primary-50/50 dark:hover:bg-stone-800/50 transition-colors">
+                  <td class="py-4 px-3">
+                    <div class="flex items-center gap-3">
+                      <img
+                        src="https://images.pexels.com/photos/389819/pexels-photo-389819.jpeg?auto=compress&cs=tinysrgb&w=200"
+                        alt="Product Image"
+                        class="w-14 h-14 rounded-2xl object-cover border border-stone-200 dark:border-stone-700"
+                      />
+                      <span class="text-stone-800 dark:text-stone-100 font-medium text-sm">Tên sản phẩm</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-3 text-center text-stone-600 dark:text-stone-300">2</td>
+                  <td class="py-4 px-3 text-center text-stone-600 dark:text-stone-300">100,000 đ</td>
+                  <td class="py-4 px-3 text-right font-semibold text-stone-800 dark:text-stone-100">200,000 đ</td>
+                </tr>
+                <tr class="hover:bg-primary-50/50 dark:hover:bg-stone-800/50 transition-colors">
+                  <td class="py-4 px-3">
+                    <div class="flex items-center gap-3">
+                      <img
+                        src="https://images.pexels.com/photos/389819/pexels-photo-389819.jpeg?auto=compress&cs=tinysrgb&w=200"
+                        alt="Product Image"
+                        class="w-14 h-14 rounded-2xl object-cover border border-stone-200 dark:border-stone-700"
+                      />
+                      <span class="text-stone-800 dark:text-stone-100 font-medium text-sm">Tên sản phẩm</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-3 text-center text-stone-600 dark:text-stone-300">1</td>
+                  <td class="py-4 px-3 text-center text-stone-600 dark:text-stone-300">150,000 đ</td>
+                  <td class="py-4 px-3 text-right font-semibold text-stone-800 dark:text-stone-100">150,000 đ</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Coupon Section -->
+          <div class="mb-6 p-5 bg-stone-50 dark:bg-stone-800/50 rounded-2xl border border-stone-200/60 dark:border-stone-700/60">
+            <h4 class="text-base font-semibold text-stone-800 dark:text-stone-100 mb-3 flex items-center gap-2">
+              <lucide-icon [img]="TagIcon" [size]="18" class="text-primary-500"></lucide-icon>
+              Nhập coupon
+            </h4>
+            <div class="flex gap-3">
+              <input
+                type="text"
+                class="input flex-1"
+                placeholder="Nhập mã giảm giá"
+              />
+              <button class="btn-secondary whitespace-nowrap">
+                Áp dụng
+              </button>
+            </div>
+          </div>
+
+          <!-- Total Price -->
+          <div class="mb-6 p-5 bg-primary-50 dark:bg-primary-900/20 rounded-2xl border border-primary-200/60 dark:border-primary-800/30">
+            <div class="flex justify-between items-center">
+              <span class="text-lg font-semibold text-stone-600 dark:text-stone-300">Tổng giá:</span>
+              <span class="text-3xl font-display font-bold text-primary-600 dark:text-primary-400">
+                350,000 đ
+              </span>
+            </div>
+          </div>
+
+          <!-- Place Order Button -->
+          <button class="btn-primary w-full text-lg py-4">
+            Đặt hàng
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

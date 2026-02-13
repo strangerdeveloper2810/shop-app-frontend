@@ -1,0 +1,168 @@
+<!-- Header - Warm Organic Style -->
+<header class="sticky top-0 z-50 w-full border-b border-primary-100/40 dark:border-stone-800/60 bg-cream-50/90 dark:bg-stone-950/90 backdrop-blur-xl">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a
+          routerLink="/home"
+          class="flex items-center space-x-2 group transition-all duration-300"
+        >
+          <span class="text-2xl font-display font-bold text-primary-600 dark:text-primary-400 group-hover:text-primary-700 dark:group-hover:text-primary-300 transition-colors">
+            ShopApp
+          </span>
+        </a>
+      </div>
+
+      <!-- Navigation Links - Center (Desktop only) -->
+      <div class="hidden md:flex md:items-center md:space-x-1">
+        <a
+          routerLink="/home"
+          routerLinkActive="bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-200"
+          [routerLinkActiveOptions]="{exact: true}"
+          class="px-4 py-2 rounded-full font-semibold text-sm text-stone-600 dark:text-stone-300 hover:bg-primary-50 dark:hover:bg-stone-800 transition-all duration-200"
+        >
+          Trang chủ
+        </a>
+        <a
+          routerLink="/products"
+          routerLinkActive="bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-200"
+          [routerLinkActiveOptions]="{exact: false}"
+          class="px-4 py-2 rounded-full font-semibold text-sm text-stone-600 dark:text-stone-300 hover:bg-primary-50 dark:hover:bg-stone-800 transition-all duration-200"
+        >
+          Sản phẩm
+        </a>
+        <a
+          routerLink="/orders"
+          routerLinkActive="bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-200"
+          [routerLinkActiveOptions]="{exact: false}"
+          class="px-4 py-2 rounded-full font-semibold text-sm text-stone-600 dark:text-stone-300 hover:bg-primary-50 dark:hover:bg-stone-800 transition-all duration-200"
+        >
+          Đơn hàng
+        </a>
+      </div>
+
+      <!-- Right Side Actions -->
+      <div class="flex items-center space-x-2">
+
+        <!-- Shopping Cart (chỉ hiện khi đã login) -->
+        <a
+          *ngIf="isLoggedIn"
+          routerLink="/cart"
+          class="relative p-2 rounded-full text-stone-500 dark:text-stone-400 hover:bg-primary-50 dark:hover:bg-stone-800 transition-all duration-200 hidden sm:flex"
+          title="Giỏ hàng"
+        >
+          <lucide-icon [img]="ShoppingCart" [size]="20"></lucide-icon>
+          <span class="absolute -top-1 -right-1 w-5 h-5 bg-primary-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
+            3
+          </span>
+        </a>
+
+        <!-- Theme Toggle -->
+        <app-theme-toggle></app-theme-toggle>
+
+        <!-- Đã login: hiện nút Đăng xuất -->
+        <div *ngIf="isLoggedIn" class="hidden sm:flex items-center">
+          <button
+            (click)="logout()"
+            class="flex items-center space-x-2 px-4 py-2 rounded-full font-semibold text-sm text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200"
+          >
+            <lucide-icon [img]="LogOut" [size]="16"></lucide-icon>
+            <span>Đăng xuất</span>
+          </button>
+        </div>
+
+        <!-- Chưa login: hiện nút Đăng nhập -->
+        <div *ngIf="!isLoggedIn" class="hidden sm:flex items-center">
+          <a
+            routerLink="/login"
+            class="flex items-center space-x-2 px-5 py-2.5 rounded-full font-bold text-sm bg-primary-500 text-white hover:bg-primary-600 hover:shadow-warm-lg transition-all duration-300 active:scale-[0.97]"
+          >
+            <lucide-icon [img]="User" [size]="16"></lucide-icon>
+            <span>Đăng nhập</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button
+          (click)="toggleMobileMenu()"
+          class="md:hidden p-2 rounded-full text-stone-600 dark:text-stone-300 hover:bg-primary-50 dark:hover:bg-stone-800 transition-all duration-200"
+          [attr.aria-expanded]="isMobileMenuOpen"
+          aria-label="Toggle navigation"
+        >
+          <lucide-icon *ngIf="!isMobileMenuOpen" [img]="Menu" [size]="24"></lucide-icon>
+          <lucide-icon *ngIf="isMobileMenuOpen" [img]="X" [size]="24"></lucide-icon>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+      *ngIf="isMobileMenuOpen"
+      class="md:hidden py-4 border-t border-stone-200/60 dark:border-stone-800/60 animate-fade-in"
+    >
+      <div class="flex flex-col space-y-2">
+        <a
+          routerLink="/home"
+          routerLinkActive="bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-200"
+          [routerLinkActiveOptions]="{exact: true}"
+          (click)="closeMobileMenu()"
+          class="px-4 py-3 rounded-2xl font-semibold text-sm text-stone-600 dark:text-stone-300 hover:bg-primary-50 dark:hover:bg-stone-800 transition-all duration-200"
+        >
+          Trang chủ
+        </a>
+        <a
+          routerLink="/products"
+          routerLinkActive="bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-200"
+          [routerLinkActiveOptions]="{exact: false}"
+          (click)="closeMobileMenu()"
+          class="px-4 py-3 rounded-2xl font-semibold text-sm text-stone-600 dark:text-stone-300 hover:bg-primary-50 dark:hover:bg-stone-800 transition-all duration-200"
+        >
+          Sản phẩm
+        </a>
+        <a
+          routerLink="/orders"
+          routerLinkActive="bg-primary-100 text-primary-800 dark:bg-primary-900/30 dark:text-primary-200"
+          [routerLinkActiveOptions]="{exact: false}"
+          (click)="closeMobileMenu()"
+          class="px-4 py-3 rounded-2xl font-semibold text-sm text-stone-600 dark:text-stone-300 hover:bg-primary-50 dark:hover:bg-stone-800 transition-all duration-200"
+        >
+          Đơn hàng
+        </a>
+
+        <!-- Mobile: Giỏ hàng (chỉ khi đã login) -->
+        <a
+          *ngIf="isLoggedIn"
+          routerLink="/cart"
+          (click)="closeMobileMenu()"
+          class="flex items-center space-x-2 px-4 py-3 rounded-2xl font-semibold text-sm text-stone-600 dark:text-stone-300 hover:bg-primary-50 dark:hover:bg-stone-800 transition-all duration-200 sm:hidden"
+        >
+          <lucide-icon [img]="ShoppingCart" [size]="20"></lucide-icon>
+          <span>Giỏ hàng</span>
+        </a>
+
+        <!-- Mobile: Đăng xuất (khi đã login) -->
+        <button
+          *ngIf="isLoggedIn"
+          (click)="logout()"
+          class="flex items-center space-x-2 px-4 py-3 rounded-2xl font-semibold text-sm text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition-all duration-200 sm:hidden"
+        >
+          <lucide-icon [img]="LogOut" [size]="20"></lucide-icon>
+          <span>Đăng xuất</span>
+        </button>
+
+        <!-- Mobile: Đăng nhập (khi chưa login) -->
+        <a
+          *ngIf="!isLoggedIn"
+          routerLink="/login"
+          (click)="closeMobileMenu()"
+          class="flex items-center justify-center space-x-2 px-4 py-3 rounded-full font-bold text-sm bg-primary-500 text-white hover:bg-primary-600 transition-all duration-300 sm:hidden"
+        >
+          <lucide-icon [img]="User" [size]="16"></lucide-icon>
+          <span>Đăng nhập</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>

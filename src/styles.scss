@@ -1,10 +1,102 @@
-/* You can add global styles to this file, and also import other style files */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..800&family=Nunito:wght@300;400;500;600;700;800&display=swap");
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    @apply bg-cream-50 text-stone-800;
+    @apply dark:bg-stone-950 dark:text-stone-100;
+    @apply transition-colors duration-300;
+  }
+
+  /* Headings sử dụng font Fraunces */
+  h1, h2, h3 {
+    font-family: 'Fraunces', Georgia, serif;
+  }
+
+  /* Smooth transitions cho dark mode */
+  *,
+  *::before,
+  *::after {
+    @apply transition-colors duration-200;
+  }
 }
 
-body {
-  background: linear-gradient(rgb(14, 17, 36), rgb(36, 26, 73));
+@layer components {
+  /* Button variants */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply bg-primary-500 text-white font-bold;
+    @apply px-7 py-3.5 rounded-full;
+    @apply hover:bg-primary-600 hover:shadow-warm-lg;
+    @apply active:scale-[0.97];
+    @apply transition-all duration-200;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply bg-stone-100 text-stone-700 font-bold;
+    @apply dark:bg-stone-800 dark:text-stone-200;
+    @apply px-7 py-3.5 rounded-full;
+    @apply hover:bg-stone-200 dark:hover:bg-stone-700;
+    @apply hover:shadow-warm active:scale-[0.97];
+    @apply transition-all duration-200;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply bg-accent-500 text-white font-bold;
+    @apply px-7 py-3.5 rounded-full;
+    @apply hover:bg-accent-600 hover:shadow-warm-lg;
+    @apply active:scale-[0.97];
+    @apply transition-all duration-200;
+  }
+
+  /* Input style */
+  .input {
+    @apply w-full px-5 py-3.5 rounded-2xl;
+    @apply bg-white border border-stone-200;
+    @apply dark:bg-stone-900 dark:border-stone-700;
+    @apply text-stone-800 dark:text-stone-100;
+    @apply placeholder:text-stone-400 dark:placeholder:text-stone-500;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary-400;
+    @apply transition-all duration-200;
+  }
+
+  /* Card style */
+  .card {
+    @apply bg-white dark:bg-stone-900;
+    @apply border border-stone-100 dark:border-stone-800;
+    @apply rounded-3xl shadow-warm;
+    @apply transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply card;
+    @apply hover:shadow-warm-xl;
+    @apply hover:scale-[1.01] hover:-translate-y-1;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-cream-50/85 dark:bg-stone-950/85;
+    @apply backdrop-blur-xl;
+    @apply border border-stone-200/50 dark:border-stone-700/50;
+  }
 }

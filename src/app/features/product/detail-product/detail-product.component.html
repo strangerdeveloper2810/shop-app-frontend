@@ -1,0 +1,143 @@
+<div class="bg-cream-50 dark:bg-stone-950 py-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Page Title -->
+    <div class="text-center mb-12">
+      <h1 class="text-3xl md:text-4xl font-bold font-display text-stone-900 dark:text-white mb-2">
+        Chi tiết sản phẩm
+      </h1>
+      <p class="text-stone-500 dark:text-stone-400">Thông tin đầy đủ về sản phẩm</p>
+    </div>
+
+    <!-- Product Layout -->
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Left Column - Image Gallery (thay the Bootstrap carousel) -->
+      <div class="w-full lg:w-1/2">
+        <!-- Main Image -->
+        <div class="relative rounded-2xl overflow-hidden border border-stone-200 dark:border-stone-800 shadow-lg mb-4 aspect-square">
+          <img
+            [src]="images[currentImageIndex]"
+            alt="Product Image"
+            class="w-full h-full object-cover"
+          />
+
+          <!-- Carousel Controls -->
+          <button
+            (click)="prevImage()"
+            class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 dark:bg-stone-800/80 backdrop-blur-sm flex items-center justify-center hover:bg-white dark:hover:bg-stone-700 transition-all shadow-lg"
+          >
+            <lucide-icon [img]="ChevronLeftIcon" [size]="20" class="text-stone-700 dark:text-stone-200"></lucide-icon>
+          </button>
+          <button
+            (click)="nextImage()"
+            class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 dark:bg-stone-800/80 backdrop-blur-sm flex items-center justify-center hover:bg-white dark:hover:bg-stone-700 transition-all shadow-lg"
+          >
+            <lucide-icon [img]="ChevronRightIcon" [size]="20" class="text-stone-700 dark:text-stone-200"></lucide-icon>
+          </button>
+        </div>
+
+        <!-- Thumbnail Row -->
+        <div class="flex gap-3 overflow-x-auto pb-2">
+          <button
+            *ngFor="let img of images; let i = index"
+            (click)="selectImage(i)"
+            class="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all hover:scale-105"
+            [ngClass]="currentImageIndex === i
+              ? 'border-primary-500 shadow-lg'
+              : 'border-stone-200 dark:border-stone-700'"
+          >
+            <img [src]="img" alt="Thumbnail" class="w-full h-full object-cover" />
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column - Product Info -->
+      <div class="w-full lg:w-1/2">
+        <div class="card p-8">
+          <h2 class="text-3xl font-bold font-display text-stone-900 dark:text-white mb-4">
+            Thông tin chi tiết sản phẩm
+          </h2>
+
+          <p class="text-stone-600 dark:text-stone-400 mb-6 leading-relaxed">
+            Mô tả sản phẩm với các tính năng vượt trội và chất lượng cao. Sản phẩm được thiết kế với công nghệ hiện đại và phù hợp với nhu cầu của bạn.
+          </p>
+
+          <!-- Price -->
+          <div class="mb-8">
+            <span class="text-4xl font-bold font-display text-primary-600 dark:text-primary-400">
+              $99
+            </span>
+            <span class="text-stone-400 dark:text-stone-500 line-through ml-3 text-lg">$149</span>
+            <span class="ml-3 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+              -33%
+            </span>
+          </div>
+
+          <!-- Quantity Selector -->
+          <div class="mb-8">
+            <label class="text-sm font-semibold text-stone-700 dark:text-stone-300 mb-3 block">
+              Số lượng
+            </label>
+            <div class="flex items-center gap-3">
+              <button
+                (click)="decreaseQuantity()"
+                class="w-12 h-12 rounded-xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors"
+              >
+                <lucide-icon [img]="MinusIcon" [size]="18" class="text-stone-700 dark:text-stone-200"></lucide-icon>
+              </button>
+              <input
+                type="text"
+                [value]="quantity"
+                class="input w-20 h-12 text-center text-lg font-semibold"
+                readonly
+              />
+              <button
+                (click)="increaseQuantity()"
+                class="w-12 h-12 rounded-xl bg-stone-100 dark:bg-stone-800 flex items-center justify-center hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors"
+              >
+                <lucide-icon [img]="PlusIcon" [size]="18" class="text-stone-700 dark:text-stone-200"></lucide-icon>
+              </button>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex gap-3 mb-8">
+            <button class="btn-secondary !px-4 !py-2 text-xs">
+              <lucide-icon [img]="ShoppingCartIcon" [size]="16"></lucide-icon>
+              <span>Thêm giỏ hàng</span>
+            </button>
+            <button class="btn-primary !px-6 !py-2 text-xs">
+              <span>Mua ngay</span>
+            </button>
+          </div>
+
+          <!-- Product Features -->
+          <div class="pt-8 border-t border-stone-200 dark:border-stone-800">
+            <h3 class="text-lg font-semibold font-display text-stone-900 dark:text-white mb-4">
+              Đặc điểm nổi bật
+            </h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mt-0.5">
+                  <lucide-icon [img]="CheckIcon" [size]="12" class="text-green-600 dark:text-green-400"></lucide-icon>
+                </div>
+                <span class="text-stone-600 dark:text-stone-300">Chất lượng cao, được kiểm định</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mt-0.5">
+                  <lucide-icon [img]="CheckIcon" [size]="12" class="text-green-600 dark:text-green-400"></lucide-icon>
+                </div>
+                <span class="text-stone-600 dark:text-stone-300">Miễn phí vận chuyển toàn quốc</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mt-0.5">
+                  <lucide-icon [img]="CheckIcon" [size]="12" class="text-green-600 dark:text-green-400"></lucide-icon>
+                </div>
+                <span class="text-stone-600 dark:text-stone-300">Đổi trả trong 30 ngày</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

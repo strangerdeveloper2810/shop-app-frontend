@@ -1,0 +1,240 @@
+<div class="min-h-screen flex">
+  <!-- LEFT PANEL - Brand & Warm Gradient Background (hidden on mobile) -->
+  <div class="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-primary-400 via-primary-500 to-accent-600 p-12 items-center justify-center relative overflow-hidden">
+    <!-- Animated background elements -->
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-20 left-20 w-72 h-72 bg-white rounded-full mix-blend-overlay filter blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-20 right-20 w-96 h-96 bg-primary-200 rounded-full mix-blend-overlay filter blur-3xl animate-pulse" style="animation-delay: 1s"></div>
+    </div>
+
+    <!-- Brand content -->
+    <div class="relative z-10 text-white max-w-md">
+      <h1 class="text-5xl font-bold mb-6 font-display text-white">
+        Chào mừng đến với ShopApp
+      </h1>
+      <p class="text-xl text-primary-50 leading-relaxed">
+        Tạo tài khoản để khám phá hàng ngàn sản phẩm chất lượng và trải nghiệm mua sắm tuyệt vời
+      </p>
+      <div class="mt-8 flex items-center space-x-2 text-primary-100">
+        <div class="w-12 h-1 bg-white rounded-full"></div>
+        <span class="text-sm font-medium">Bắt đầu ngay</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL - Register Form -->
+  <div class="w-full lg:w-1/2 flex items-center justify-center p-6 bg-cream-50 dark:bg-stone-950">
+    <div class="w-full max-w-md">
+      <!-- Mobile brand header -->
+      <div class="lg:hidden mb-8 text-center">
+        <h1 class="text-3xl font-bold font-display text-primary-600 dark:text-primary-400">
+          ShopApp
+        </h1>
+        <p class="text-stone-600 dark:text-stone-400 mt-2">Tạo tài khoản mới</p>
+      </div>
+
+      <!-- Form card -->
+      <div class="bg-white dark:bg-stone-900 rounded-3xl p-8 shadow-warm-xl border border-stone-200 dark:border-stone-800">
+        <h2 class="text-3xl font-bold font-display text-stone-900 dark:text-white mb-2">Đăng ký</h2>
+        <p class="text-stone-600 dark:text-stone-400 mb-8">Điền thông tin để tạo tài khoản</p>
+
+        <form #registerForm="ngForm" class="space-y-5">
+          <!-- Phone Number -->
+          <div>
+            <label class="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
+              Số điện thoại
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <lucide-icon [img]="PhoneIcon" class="w-5 h-5 text-stone-400"></lucide-icon>
+              </div>
+              <input
+                type="text"
+                name="phone"
+                required
+                [(ngModel)]="phone"
+                (input)="onPhoneChange()"
+                (focus)="registerForm.form.markAsTouched()"
+                placeholder="0912345678"
+                class="input pl-10"
+              />
+            </div>
+            <div *ngIf="phone.length < 10 && registerForm.form.touched" class="flex items-center mt-2 text-sm text-rose-500">
+              <lucide-icon [img]="AlertCircleIcon" class="w-4 h-4 mr-1"></lucide-icon>
+              Số điện thoại có ít nhất 10 ký tự
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div>
+            <label class="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
+              Mật khẩu
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <lucide-icon [img]="LockIcon" class="w-5 h-5 text-stone-400"></lucide-icon>
+              </div>
+              <input
+                type="password"
+                name="password"
+                required
+                [(ngModel)]="password"
+                placeholder="Ít nhất 6 ký tự"
+                class="input pl-10"
+              />
+            </div>
+            <div *ngIf="password.length < 6 && registerForm.form.touched" class="flex items-center mt-2 text-sm text-rose-500">
+              <lucide-icon [img]="AlertCircleIcon" class="w-4 h-4 mr-1"></lucide-icon>
+              Mật khẩu phải có ít nhất 6 ký tự
+            </div>
+          </div>
+
+          <!-- Retype Password -->
+          <div>
+            <label class="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
+              Xác nhận mật khẩu
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <lucide-icon [img]="LockIcon" class="w-5 h-5 text-stone-400"></lucide-icon>
+              </div>
+              <input
+                type="password"
+                name="retypePassword"
+                required
+                [(ngModel)]="retypePassword"
+                (input)="registerForm.form.markAsTouched(); checkPasswordMatch()"
+                placeholder="Nhập lại mật khẩu"
+                class="input pl-10"
+              />
+            </div>
+            <div *ngIf="registerForm.form.controls['retypePassword'] && registerForm.form.controls['retypePassword'].hasError('passwordMismatch') && registerForm.form.touched"
+                 class="flex items-center mt-2 text-sm text-rose-500">
+              <lucide-icon [img]="AlertCircleIcon" class="w-4 h-4 mr-1"></lucide-icon>
+              Mật khẩu không khớp
+            </div>
+          </div>
+
+          <!-- Full Name -->
+          <div>
+            <label class="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
+              Họ và tên
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <lucide-icon [img]="UserIcon" class="w-5 h-5 text-stone-400"></lucide-icon>
+              </div>
+              <input
+                type="text"
+                name="fullName"
+                required
+                [(ngModel)]="fullName"
+                placeholder="Nguyễn Văn A"
+                class="input pl-10"
+              />
+            </div>
+          </div>
+
+          <!-- Date of Birth -->
+          <div>
+            <label class="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
+              Ngày sinh
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <lucide-icon [img]="CalendarIcon" class="w-5 h-5 text-stone-400"></lucide-icon>
+              </div>
+              <input
+                type="date"
+                name="dateOfBirth"
+                required
+                [(ngModel)]="dateOfBirth"
+                (input)="registerForm.form.markAsTouched(); checkAge()"
+                class="input pl-10"
+              />
+            </div>
+            <div *ngIf="registerForm.form.controls['dateOfBirth'] && registerForm.form.controls['dateOfBirth'].hasError('invalidAge') && registerForm.form.touched"
+                 class="flex items-center mt-2 text-sm text-rose-500">
+              <lucide-icon [img]="AlertCircleIcon" class="w-4 h-4 mr-1"></lucide-icon>
+              Bạn chưa đủ 18 tuổi
+            </div>
+          </div>
+
+          <!-- Address -->
+          <div>
+            <label class="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
+              Địa chỉ
+            </label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <lucide-icon [img]="MapPinIcon" class="w-5 h-5 text-stone-400"></lucide-icon>
+              </div>
+              <input
+                type="text"
+                name="address"
+                [(ngModel)]="address"
+                placeholder="123 Đường ABC, Quận XYZ"
+                class="input pl-10"
+              />
+            </div>
+          </div>
+
+          <!-- Terms Checkbox -->
+          <div class="flex items-start">
+            <div class="flex items-center h-5">
+              <input
+                type="checkbox"
+                name="isAccepted"
+                [(ngModel)]="isAccepted"
+                class="w-4 h-4 text-primary-600 bg-stone-100 border-stone-300 rounded focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-stone-900 focus:ring-2 dark:bg-stone-700 dark:border-stone-600"
+              />
+            </div>
+            <label class="ml-3 text-sm text-stone-600 dark:text-stone-400">
+              Tôi đồng ý với
+              <a href="#" class="text-primary-600 dark:text-primary-400 hover:underline font-medium">điều khoản dịch vụ</a>
+              và
+              <a href="#" class="text-primary-600 dark:text-primary-400 hover:underline font-medium">chính sách bảo mật</a>
+            </label>
+          </div>
+
+          <!-- Register Button -->
+          <button
+            type="button"
+            (click)="register()"
+            [disabled]="!isAccepted || registerForm.invalid"
+            class="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Đăng ký
+          </button>
+        </form>
+
+        <!-- Divider -->
+        <div class="relative my-8">
+          <div class="absolute inset-0 flex items-center">
+            <div class="w-full border-t border-stone-200 dark:border-stone-800"></div>
+          </div>
+          <div class="relative flex justify-center text-sm">
+            <span class="px-4 bg-white dark:bg-stone-900 text-stone-500 dark:text-stone-400">
+              Đã có tài khoản?
+            </span>
+          </div>
+        </div>
+
+        <!-- Login Link -->
+        <div class="text-center">
+          <a
+            routerLink="/login"
+            class="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-semibold text-sm transition-colors"
+          >
+            Đăng nhập ngay
+          </a>
+        </div>
+      </div>
+
+      <!-- Footer text -->
+      <p class="mt-8 text-center text-sm text-stone-500 dark:text-stone-400">
+        Bằng việc đăng ký, bạn đồng ý với các điều khoản sử dụng của chúng tôi
+      </p>
+    </div>
+  </div>
+</div>

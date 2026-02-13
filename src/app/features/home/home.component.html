@@ -1,0 +1,256 @@
+<!-- Hero/Intro Section -->
+<section class="relative py-16 md:py-24">
+  <!-- Decorative warm blobs -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary-200/20 dark:bg-primary-900/10 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-accent-200/20 dark:bg-accent-900/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative container mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Hero Content -->
+    <div class="text-center mb-12 md:mb-16">
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-4 md:mb-6 text-primary-600 dark:text-primary-400">
+        ShopApp
+      </h1>
+      <p class="text-lg md:text-xl text-stone-500 dark:text-stone-400 max-w-2xl mx-auto leading-relaxed">
+        Khám phá sản phẩm chất lượng cao với giá tốt nhất.
+        Mua sắm dễ dàng, giao hàng nhanh chóng.
+      </p>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="max-w-4xl mx-auto mb-12 md:mb-16">
+      <div class="relative flex items-center gap-3 bg-white dark:bg-stone-800 rounded-full border border-stone-200 dark:border-stone-700 p-2 shadow-warm-md hover:shadow-warm-lg transition-shadow duration-300">
+        <!-- Search Icon -->
+        <div class="pl-4 text-stone-400 dark:text-stone-500">
+          <lucide-icon [img]="SearchIcon" [size]="20"></lucide-icon>
+        </div>
+
+        <!-- Search Input -->
+        <input
+          type="text"
+          placeholder="Tìm sản phẩm..."
+          class="flex-1 px-2 py-3 bg-transparent border-none outline-none text-stone-800 dark:text-stone-100 placeholder:text-stone-400 dark:placeholder:text-stone-500"
+        />
+
+        <!-- Category Dropdown -->
+        <select
+          class="px-4 py-2.5 bg-stone-50 dark:bg-stone-700 border border-stone-200 dark:border-stone-600 rounded-full text-stone-600 dark:text-stone-300 outline-none focus:ring-2 focus:ring-primary-300 cursor-pointer transition-all text-sm font-semibold"
+        >
+          <option selected disabled>Danh mục sản phẩm</option>
+          <option>Đồ điện tử</option>
+          <option>Hải sản</option>
+          <option>Bánh kẹo</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <!-- Product Card 1 -->
+      <div class="card-hover group overflow-hidden">
+        <div class="relative overflow-hidden rounded-t-3xl aspect-[4/3]">
+          <img
+            src="https://images.unsplash.com/photo-1696926040556-61d2bb6ac9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60"
+            alt="Product 1"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-display font-semibold text-stone-800 dark:text-stone-100 mb-2">Product 1</h3>
+          <p class="text-sm text-stone-500 dark:text-stone-400 line-clamp-2 mb-3">
+            Mô tả sản phẩm với các tính năng vượt trội và chất lượng cao.
+          </p>
+          <div class="mb-4">
+            <span class="inline-flex items-center gap-1 px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 text-xs font-semibold rounded-full">
+              <lucide-icon [img]="ZapIcon" [size]="14"></lucide-icon>
+              Bảo hành: 12 tháng
+            </span>
+          </div>
+          <div class="mb-4">
+            <span class="text-sm text-stone-400 dark:text-stone-500 line-through mr-2">$200</span>
+            <span class="text-2xl font-display font-bold text-primary-600 dark:text-primary-400">$100</span>
+          </div>
+          <div class="flex items-center gap-1 mb-4">
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+          </div>
+          <div class="flex gap-3">
+            <button class="btn-secondary !px-3 !py-2 text-xs flex-1 flex items-center justify-center gap-1.5">
+              <lucide-icon [img]="ShoppingCartIcon" [size]="14"></lucide-icon>
+              Thêm giỏ hàng
+            </button>
+            <button class="btn-primary !px-3 !py-2 text-xs flex-1">Mua ngay</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 2 -->
+      <div class="card-hover group overflow-hidden">
+        <div class="relative overflow-hidden rounded-t-3xl aspect-[4/3]">
+          <img
+            src="https://images.unsplash.com/photo-1696926040556-61d2bb6ac9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60"
+            alt="Product 2"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-display font-semibold text-stone-800 dark:text-stone-100 mb-2">Product 2</h3>
+          <p class="text-sm text-stone-500 dark:text-stone-400 line-clamp-2 mb-3">
+            Mô tả sản phẩm với các tính năng vượt trội và chất lượng cao.
+          </p>
+          <div class="mb-4">
+            <span class="inline-flex items-center gap-1 px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 text-xs font-semibold rounded-full">
+              <lucide-icon [img]="ZapIcon" [size]="14"></lucide-icon>
+              Bảo hành: 12 tháng
+            </span>
+          </div>
+          <div class="mb-4">
+            <span class="text-sm text-stone-400 dark:text-stone-500 line-through mr-2">$200</span>
+            <span class="text-2xl font-display font-bold text-primary-600 dark:text-primary-400">$100</span>
+          </div>
+          <div class="flex items-center gap-1 mb-4">
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+          </div>
+          <div class="flex gap-3">
+            <button class="btn-secondary !px-3 !py-2 text-xs flex-1 flex items-center justify-center gap-1.5">
+              <lucide-icon [img]="ShoppingCartIcon" [size]="14"></lucide-icon>
+              Thêm giỏ hàng
+            </button>
+            <button class="btn-primary !px-3 !py-2 text-xs flex-1">Mua ngay</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 3 -->
+      <div class="card-hover group overflow-hidden">
+        <div class="relative overflow-hidden rounded-t-3xl aspect-[4/3]">
+          <img
+            src="https://images.unsplash.com/photo-1696926040556-61d2bb6ac9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60"
+            alt="Product 3"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-display font-semibold text-stone-800 dark:text-stone-100 mb-2">Product 3</h3>
+          <p class="text-sm text-stone-500 dark:text-stone-400 line-clamp-2 mb-3">
+            Mô tả sản phẩm với các tính năng vượt trội và chất lượng cao.
+          </p>
+          <div class="mb-4">
+            <span class="inline-flex items-center gap-1 px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 text-xs font-semibold rounded-full">
+              <lucide-icon [img]="ZapIcon" [size]="14"></lucide-icon>
+              Bảo hành: 12 tháng
+            </span>
+          </div>
+          <div class="mb-4">
+            <span class="text-sm text-stone-400 dark:text-stone-500 line-through mr-2">$200</span>
+            <span class="text-2xl font-display font-bold text-primary-600 dark:text-primary-400">$100</span>
+          </div>
+          <div class="flex items-center gap-1 mb-4">
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+          </div>
+          <div class="flex gap-3">
+            <button class="btn-secondary !px-3 !py-2 text-xs flex-1 flex items-center justify-center gap-1.5">
+              <lucide-icon [img]="ShoppingCartIcon" [size]="14"></lucide-icon>
+              Thêm giỏ hàng
+            </button>
+            <button class="btn-primary !px-3 !py-2 text-xs flex-1">Mua ngay</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 4 -->
+      <div class="card-hover group overflow-hidden">
+        <div class="relative overflow-hidden rounded-t-3xl aspect-[4/3]">
+          <img
+            src="https://images.unsplash.com/photo-1696926040556-61d2bb6ac9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60"
+            alt="Product 4"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-display font-semibold text-stone-800 dark:text-stone-100 mb-2">Product 4</h3>
+          <p class="text-sm text-stone-500 dark:text-stone-400 line-clamp-2 mb-3">
+            Mô tả sản phẩm với các tính năng vượt trội và chất lượng cao.
+          </p>
+          <div class="mb-4">
+            <span class="inline-flex items-center gap-1 px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 text-xs font-semibold rounded-full">
+              <lucide-icon [img]="ZapIcon" [size]="14"></lucide-icon>
+              Bảo hành: 12 tháng
+            </span>
+          </div>
+          <div class="mb-4">
+            <span class="text-sm text-stone-400 dark:text-stone-500 line-through mr-2">$200</span>
+            <span class="text-2xl font-display font-bold text-primary-600 dark:text-primary-400">$100</span>
+          </div>
+          <div class="flex items-center gap-1 mb-4">
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+          </div>
+          <div class="flex gap-3">
+            <button class="btn-secondary !px-3 !py-2 text-xs flex-1 flex items-center justify-center gap-1.5">
+              <lucide-icon [img]="ShoppingCartIcon" [size]="14"></lucide-icon>
+              Thêm giỏ hàng
+            </button>
+            <button class="btn-primary !px-3 !py-2 text-xs flex-1">Mua ngay</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 5 -->
+      <div class="card-hover group overflow-hidden">
+        <div class="relative overflow-hidden rounded-t-3xl aspect-[4/3]">
+          <img
+            src="https://images.unsplash.com/photo-1696926040556-61d2bb6ac9da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=500&q=60"
+            alt="Product 5"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-display font-semibold text-stone-800 dark:text-stone-100 mb-2">Product 5</h3>
+          <p class="text-sm text-stone-500 dark:text-stone-400 line-clamp-2 mb-3">
+            Mô tả sản phẩm với các tính năng vượt trội và chất lượng cao.
+          </p>
+          <div class="mb-4">
+            <span class="inline-flex items-center gap-1 px-3 py-1 bg-accent-50 dark:bg-accent-900/30 text-accent-700 dark:text-accent-300 text-xs font-semibold rounded-full">
+              <lucide-icon [img]="ZapIcon" [size]="14"></lucide-icon>
+              Bảo hành: 12 tháng
+            </span>
+          </div>
+          <div class="mb-4">
+            <span class="text-sm text-stone-400 dark:text-stone-500 line-through mr-2">$200</span>
+            <span class="text-2xl font-display font-bold text-primary-600 dark:text-primary-400">$100</span>
+          </div>
+          <div class="flex items-center gap-1 mb-4">
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+            <lucide-icon [img]="StarIcon" [size]="16" class="fill-amber-400 text-amber-400"></lucide-icon>
+          </div>
+          <div class="flex gap-3">
+            <button class="btn-secondary !px-3 !py-2 text-xs flex-1 flex items-center justify-center gap-1.5">
+              <lucide-icon [img]="ShoppingCartIcon" [size]="14"></lucide-icon>
+              Thêm giỏ hàng
+            </button>
+            <button class="btn-primary !px-3 !py-2 text-xs flex-1">Mua ngay</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

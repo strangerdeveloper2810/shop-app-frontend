@@ -1,0 +1,122 @@
+import { Component, inject, ViewChild } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { FormsModule, NgForm } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { RegisterDTO } from '../../dtos/register.dto';
+import { LucideAngularModule, Phone, Lock, User, MapPin, Calendar, AlertCircle } from 'lucide-angular';
+
+@Component({
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss'],
+  standalone: true,
+  imports: [FormsModule, NgIf, LucideAngularModule, RouterLink],
+})
+export class RegisterComponent {
+  @ViewChild('registerForm') registerForm!: NgForm;
+  // Khai báo các biến tương ứng với các trường dữ liệu trong form
+  private router = inject(Router);
+  private userService = inject(UserService);
+
+  // Lucide icons
+  PhoneIcon = Phone;
+  LockIcon = Lock;
+  UserIcon = User;
+  MapPinIcon = MapPin;
+  CalendarIcon = Calendar;
+  AlertCircleIcon = AlertCircle;
+
+  phone: string = '';
+  password: string = '';
+  retypePassword: string = '';
+  fullName: string = '';
+  address: string = '';
+  dateOfBirth: Date = new Date();
+  isAccepted: boolean = false;
+
+  // constructor(
+  //   private router: Router,
+  //   private userService: UserService,
+  // ) {
+  //   this.phone = '';
+  //   this.password = '';
+  //   this.retypePassword = '';
+  //   this.fullName = '';
+  //   this.address = '';
+  //   this.dateOfBirth = new Date();
+  //   this.dateOfBirth.setFullYear(this.dateOfBirth.getFullYear() - 18);
+  //   this.isAccepted = false;
+  // }
+
+  onPhoneChange() {
+    console.log(`phone typed: ${this.phone}`);
+  }
+
+  register() {
+    const registerDTO: RegisterDTO = {
+      fullname: this.fullName,
+      phone_number: this.phone,
+      address: this.address,
+      password: this.password,
+      retype_password: this.retypePassword,
+      date_of_birth: this.dateOfBirth,
+      facebook_account_id: 0,
+      google_account_id: 0,
+      role_id: 1,
+    };
+
+    this.userService.register(registerDTO).subscribe({
+      next: (response: any) => {
+        debugger;
+
+        // xử lý kết quả trả về khi đăng kí thành công
+        this.router.navigate(['/login']);
+      },
+      complete() {
+        debugger;
+      },
+      error: (error: any) => {
+        // xử lý lỗi nếu có
+        debugger;
+        alert(`Không thể đăng kí, ${error.error}`);
+      },
+    });
+  }
+
+  //check password match
+  checkPasswordMatch() {
+    if (this.password !== this.retypePassword) {
+      this.registerForm.form.controls['retypePassword'].setErrors({
+        passwordMismatch: true,
+      });
+    } else {
+      this.registerForm.form.controls['retypePassword'].setErrors(null);
+    }
+  }
+
+  //check age
+  checkAge() {
+    if (this.dateOfBirth) {
+      const today = new Date();
+      const birthDate = new Date(this.dateOfBirth);
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const monthDiff = today.getMonth() - birthDate.getMonth();
+
+      if (
+        monthDiff < 0 ||
+        (monthDiff === 0 && today.getDate() < birthDate.getDate())
+      ) {
+        age--;
+      }
+
+      if (age < 18) {
+        this.registerForm.form.controls['dateOfBirth'].setErrors({
+          invalidAge: true,
+        });
+      } else {
+        this.registerForm.form.controls['dateOfBirth'].setErrors(null);
+      }
+    }
+  }
+}

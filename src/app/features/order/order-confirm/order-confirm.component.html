@@ -1,0 +1,127 @@
+<div class="bg-cream-50 dark:bg-stone-950 py-12">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Success Message -->
+    <div class="text-center mb-12">
+      <!-- Success Icon -->
+      <div class="flex justify-center mb-6">
+        <div class="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
+          <lucide-icon [img]="CheckCircleIcon" [size]="40" class="text-green-600 dark:text-green-400"></lucide-icon>
+        </div>
+      </div>
+
+      <h1 class="text-3xl md:text-4xl font-display font-bold text-stone-800 dark:text-stone-100 mb-4">
+        Xác nhận đơn hàng thành công!
+      </h1>
+      <p class="text-lg text-stone-500 dark:text-stone-400 max-w-2xl mx-auto">
+        Cảm ơn bạn đã đặt hàng! Dưới đây là thông tin chi tiết về đơn hàng của bạn. Chúng tôi sẽ xử lý và giao hàng trong thời gian sớm nhất.
+      </p>
+    </div>
+
+    <!-- Order Details Card -->
+    <div class="card p-8 mb-8">
+      <div class="flex items-center gap-3 mb-6">
+        <lucide-icon [img]="ShoppingBagIcon" [size]="24" class="text-primary-500"></lucide-icon>
+        <h2 class="text-2xl font-display font-bold text-stone-800 dark:text-stone-100">Chi tiết đơn hàng</h2>
+      </div>
+
+      <!-- Order Table -->
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="border-b border-stone-200 dark:border-stone-700">
+              <th class="text-left py-4 px-3 text-sm font-semibold text-stone-500 dark:text-stone-400">Sản phẩm</th>
+              <th class="text-center py-4 px-3 text-sm font-semibold text-stone-500 dark:text-stone-400">SL</th>
+              <th class="text-center py-4 px-3 text-sm font-semibold text-stone-500 dark:text-stone-400">Đơn giá</th>
+              <th class="text-right py-4 px-3 text-sm font-semibold text-stone-500 dark:text-stone-400">Tổng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-stone-100 dark:border-stone-800 hover:bg-primary-50/50 dark:hover:bg-stone-800/50 transition-colors">
+              <td class="py-4 px-3">
+                <div class="flex items-center gap-3">
+                  <img
+                    src="https://images.pexels.com/photos/389819/pexels-photo-389819.jpeg?auto=compress&cs=tinysrgb&w=200"
+                    alt="Product Image"
+                    class="w-14 h-14 rounded-2xl object-cover border border-stone-200 dark:border-stone-700"
+                  />
+                  <span class="text-stone-800 dark:text-stone-100 font-medium text-sm">Tên sản phẩm</span>
+                </div>
+              </td>
+              <td class="py-4 px-3 text-center text-stone-600 dark:text-stone-300">2</td>
+              <td class="py-4 px-3 text-center text-stone-600 dark:text-stone-300">100,000 đ</td>
+              <td class="py-4 px-3 text-right font-semibold text-stone-800 dark:text-stone-100">200,000 đ</td>
+            </tr>
+            <tr class="hover:bg-primary-50/50 dark:hover:bg-stone-800/50 transition-colors">
+              <td class="py-4 px-3">
+                <div class="flex items-center gap-3">
+                  <img
+                    src="https://images.pexels.com/photos/389819/pexels-photo-389819.jpeg?auto=compress&cs=tinysrgb&w=200"
+                    alt="Product Image"
+                    class="w-14 h-14 rounded-2xl object-cover border border-stone-200 dark:border-stone-700"
+                  />
+                  <span class="text-stone-800 dark:text-stone-100 font-medium text-sm">Tên sản phẩm</span>
+                </div>
+              </td>
+              <td class="py-4 px-3 text-center text-stone-600 dark:text-stone-300">1</td>
+              <td class="py-4 px-3 text-center text-stone-600 dark:text-stone-300">150,000 đ</td>
+              <td class="py-4 px-3 text-right font-semibold text-stone-800 dark:text-stone-100">150,000 đ</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="border-t border-stone-200 dark:border-stone-800 pt-6">
+        <div class="flex justify-between items-center mb-3">
+          <span class="text-stone-500 dark:text-stone-400">Tạm tính:</span>
+          <span class="text-stone-800 dark:text-stone-100 font-medium">350,000 đ</span>
+        </div>
+        <div class="flex justify-between items-center mb-3">
+          <span class="text-stone-500 dark:text-stone-400">Phí vận chuyển:</span>
+          <span class="text-accent-600 dark:text-accent-400 font-medium">Miễn phí</span>
+        </div>
+        <div class="flex justify-between items-center pt-4 border-t border-stone-200 dark:border-stone-800">
+          <span class="text-lg font-semibold text-stone-800 dark:text-stone-100">Tổng cộng:</span>
+          <span class="text-3xl font-display font-bold text-primary-600 dark:text-primary-400">
+            350,000 đ
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Info Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div class="card p-6 text-center">
+        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+          <lucide-icon [img]="CheckCircleIcon" [size]="24" class="text-primary-600 dark:text-primary-400"></lucide-icon>
+        </div>
+        <h3 class="text-stone-800 dark:text-stone-100 font-display font-semibold mb-1">Đã xác nhận</h3>
+        <p class="text-sm text-stone-500 dark:text-stone-400">Đơn hàng đã được xác nhận</p>
+      </div>
+
+      <div class="card p-6 text-center">
+        <div class="w-12 h-12 bg-accent-100 dark:bg-accent-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+          <lucide-icon [img]="ShoppingBagIcon" [size]="24" class="text-accent-600 dark:text-accent-400"></lucide-icon>
+        </div>
+        <h3 class="text-stone-800 dark:text-stone-100 font-display font-semibold mb-1">Giao hàng nhanh</h3>
+        <p class="text-sm text-stone-500 dark:text-stone-400">Dự kiến 2-3 ngày làm việc</p>
+      </div>
+
+      <div class="card p-6 text-center">
+        <div class="w-12 h-12 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-3">
+          <lucide-icon [img]="CheckCircleIcon" [size]="24" class="text-green-600 dark:text-green-400"></lucide-icon>
+        </div>
+        <h3 class="text-stone-800 dark:text-stone-100 font-display font-semibold mb-1">Bảo vệ người mua</h3>
+        <p class="text-sm text-stone-500 dark:text-stone-400">Hoàn tiền 100% nếu có lỗi</p>
+      </div>
+    </div>
+
+    <!-- Continue Shopping Button -->
+    <div class="text-center">
+      <button class="btn-primary inline-flex items-center gap-3 px-8 py-4 text-lg">
+        <lucide-icon [img]="ShoppingBagIcon" [size]="20"></lucide-icon>
+        <span>Tiếp tục mua sắm</span>
+      </button>
+    </div>
+  </div>
+</div>
